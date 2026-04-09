@@ -1,4 +1,4 @@
-# CTF Toolkit
+# /CTF Toolkit
 
 A comprehensive collection of scripts, tools, and agent skills for solving CTF (Capture The Flag) challenges. Organized by category with a master installer for quick environment setup.
 
