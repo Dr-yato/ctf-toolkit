@@ -1,6 +1,49 @@
 # CTF Toolkit
 
-A comprehensive collection of scripts and tools for solving CTF (Capture The Flag) challenges. Organized by category with a master installer for quick environment setup.
+A comprehensive collection of scripts, tools, and agent skills for solving CTF (Capture The Flag) challenges. Organized by category with a master installer for quick environment setup.
+
+The toolkit ships with a complete set of agent skills that can be installed into any AI coding agent that supports the Claude Code skill format — including Claude Code CLI, desktop app, and compatible agent harnesses. Once installed, the agent knows exactly which script to run, which flags to pass, and how to interpret results for every challenge category.
+
+## Agent Skills — Quick Install
+
+```bash
+git clone https://github.com/Dr-yato/ctf-toolkit ~/ctf-toolkit
+bash ~/ctf-toolkit/install-skills.sh
+```
+
+After running the install script, 10 skills become available in your agent:
+
+| Skill | Trigger when... |
+|-------|----------------|
+| `/ctf-toolkit` | Starting any CTF challenge — routes to the right category |
+| `/ctf-toolkit-web` | HTTP app, SQLi, XSS, SSRF, JWT, SSTI, file upload |
+| `/ctf-toolkit-pwn` | Binary exploitation, overflow, ROP, format string, heap |
+| `/ctf-toolkit-crypto` | RSA, classical ciphers, XOR, AES, hash cracking |
+| `/ctf-toolkit-forensics` | PCAP, disk image, memory dump, steganography |
+| `/ctf-toolkit-networking` | Custom TCP/UDP service, protocol reversing |
+| `/ctf-toolkit-ransomware` | Ransomware binary + encrypted files to recover |
+| `/ctf-toolkit-vuln` | Fuzzing, source audit, crash triage, symbolic execution |
+| `/ctf-toolkit-osint` | Domain, username, image metadata, social media recon |
+| `/ctf-toolkit-rev` | Decompilation, GDB, Ghidra, binary patching |
+
+Each skill tells the agent exactly which script to run with which arguments, includes decision maps, and links to deeper technique notes when needed.
+
+### Adding Skills to Any Agent
+
+The skills live in `skills/` and follow the standard Claude Code skill format. They work in:
+
+- Claude Code CLI (`claude` command)
+- Claude Code desktop app
+- Claude Code VS Code / JetBrains extensions
+- Any agent harness that loads skills from `~/.claude/skills/`
+
+To install into a different skills directory, copy the folders manually:
+
+```bash
+cp -r ~/ctf-toolkit/skills/ctf-toolkit* /path/to/your/agent/skills/
+```
+
+Each skill is a single `SKILL.md` file with a frontmatter header (`name`, `description`, `allowed-tools`) and operational instructions the agent follows directly. No configuration beyond copying the files is required.
 
 ## Categories
 
